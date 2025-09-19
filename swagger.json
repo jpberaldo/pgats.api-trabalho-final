@@ -1,0 +1,159 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Loja Simples API",
+    "version": "1.0.0",
+    "description": "API REST para gerenciamento de produtos e usuários."
+  },
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Registrar novo usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Usuário criado" },
+          "409": { "description": "Usuário já existe" }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login de usuário",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string" },
+                  "password": { "type": "string" }
+                },
+                "required": ["username", "password"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Login bem-sucedido" },
+          "401": { "description": "Login ou senha inválidos" }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "Consultar usuários",
+        "responses": {
+          "200": { "description": "Lista de usuários" }
+        }
+      }
+    },
+    "/users/{id}": {
+      "delete": {
+        "summary": "Excluir usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Usuário excluído" },
+          "404": { "description": "Usuário não encontrado" }
+        }
+      }
+    },
+    "/products": {
+      "post": {
+        "summary": "Adicionar produto",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "price": { "type": "number" }
+                },
+                "required": ["name", "price"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Produto criado" },
+          "409": { "description": "Produto já existe" }
+        }
+      },
+      "get": {
+        "summary": "Consultar produtos",
+        "responses": {
+          "200": { "description": "Lista de produtos" }
+        }
+      }
+    },
+    "/products/{id}": {
+      "put": {
+        "summary": "Alterar produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "price": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Produto alterado" },
+          "404": { "description": "Produto não encontrado" }
+        }
+      },
+      "delete": {
+        "summary": "Excluir produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Produto excluído" },
+          "404": { "description": "Produto não encontrado" }
+        }
+      }
+    }
+  }
+}

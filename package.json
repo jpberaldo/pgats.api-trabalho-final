@@ -1,0 +1,13 @@
+{
+  "name": "loja-simples-api",
+  "version": "1.0.0",
+  "description": "API REST para loja simples com Express, para estudos de testes e automação.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "swagger-ui-express": "^4.6.3"
+  }
+}
