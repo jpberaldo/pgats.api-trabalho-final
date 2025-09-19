@@ -4,10 +4,11 @@
   "description": "API REST para loja simples com Express, para estudos de testes e automação.",
   "main": "server.js",
   "scripts": {
+    "test": "mocha test/**/*.test.js --timeout 10000",
     "start": "node server.js"
   },
   "dependencies": {
-    "chai": "^6.0.1",
+    "chai": "^4.5.0",
     "express": "^4.18.2",
     "mocha": "^11.7.2",
     "sinon": "^21.0.0",
