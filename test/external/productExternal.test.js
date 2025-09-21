@@ -1,5 +1,6 @@
 const request = require('supertest');
 const { expect } = require('chai');
+require('dotenv').config();
 
 
 describe('Products External Tests', () => {
@@ -8,7 +9,7 @@ describe('Products External Tests', () => {
 
     beforeEach(async () => {
 
-        const respostaLogin = await request('http://localhost:3000')
+        const respostaLogin = await request(process.env.BASE_URL)
             .post('/users/login')
             .send({
                 username: "usuario-teste-product",
@@ -25,7 +26,7 @@ describe('Products External Tests', () => {
 
         it('Quando adicionar um produto com dados válidos o status de retorno será 201', async () => {
 
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL)
                 .post('/products')
                 .set('Authorization', `Bearer ${token}`)
                 .send({

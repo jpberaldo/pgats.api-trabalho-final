@@ -1,5 +1,6 @@
 const request = require('supertest');
 const { expect } = require('chai');
+require('dotenv').config();
 
 
 describe('User External Tests', () => {
@@ -7,7 +8,7 @@ describe('User External Tests', () => {
     describe('/POST Register', () => {
 
         it('Quando registrar usuário com dados válidos o status de retorno será 201', async () => {
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL)
                 .post('/users/register')
                 .send({
                     username: "usuario-teste",
@@ -25,7 +26,7 @@ describe('User External Tests', () => {
 
         it('Quando fazer login na rota /users/login com dados validos retornar sucesso e status code', async () => {
 
-            const resposta = await request('http://localhost:3000')
+            const resposta = await request(process.env.BASE_URL)
                 .post('/users/login')
                 .send({
                     username: "usuario-teste",
