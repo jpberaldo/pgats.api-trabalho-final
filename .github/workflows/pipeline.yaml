@@ -1,4 +1,4 @@
-name: Pipeline para execucao dos testes
+name: Pipeline Tests CI
 
 on:
   push:
@@ -23,4 +23,13 @@ jobs:
       run: npm install
 
     - name: Run software tests
-      run: npm run test
+      run: npm run test-controller
+
+    - name: API start
+      run: npm start &
+
+    - name: Waiting api starting
+      run: sleep 5
+
+    - name: Run software external tests
+      run: npm run test-external
