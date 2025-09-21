@@ -13,13 +13,23 @@ exports.register = (req, res) => {
   }
 };
 
+
+const jwt = require('jsonwebtoken');
+const { SECRET } = require('../middlewares/auth');
+
 exports.login = (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ error: 'Informe usuário e senha.' });
   try {
     const result = userService.login(username, password);
     if (result.error) return res.status(401).json(result);
-    res.json(result);
+    // Gerar token JWT
+    const token = jwt.sign({ username: result.user.username, id: result.user.id }, SECRET, { expiresIn: '1h' });
+    res.status(200).json({
+      message: 'Login realizado com sucesso.',
+      token,
+      user: result.user
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }

@@ -21,4 +21,22 @@ describe('User Controller External', () => {
 
     });
 
+    describe('/POST Login', () => {
+
+        it('Quando fazer login na rota /users/login com dados validos retornar sucesso e status code', async () => {
+
+            const resposta = await request('http://localhost:3000')
+                .post('/users/login')
+                .send({
+                    username: "usuario-teste",
+                    password: "senha-teste"
+                });
+
+            console.log(resposta.body);
+            expect(resposta.status).to.equal(200);
+            expect(resposta.body).to.have.property('message', 'Login realizado com sucesso.');
+        });
+
+    });
+
 });

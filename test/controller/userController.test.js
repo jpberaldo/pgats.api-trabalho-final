@@ -12,7 +12,7 @@ describe('User Controller', () => {
 
     describe('/POST Register', () => {
 
-        it.only('Quando registrar usuário com dados válidos o status de retorno será 201', async () => {
+        it('Quando registrar usuário com dados válidos o status de retorno será 201', async () => {
             const resposta = await request(app)
                 .post('/users/register')
                 .send({
