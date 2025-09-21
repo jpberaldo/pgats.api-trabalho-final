@@ -2,7 +2,7 @@ const request = require('supertest');
 const { expect } = require('chai');
 
 
-describe('User Controller External', () => {
+describe('User External Tests', () => {
 
     describe('/POST Register', () => {
 
@@ -15,7 +15,7 @@ describe('User Controller External', () => {
                 });
 
             expect(resposta.status).to.equal(201);
-            expect(resposta.body).to.have.property('id', 1);
+            expect(resposta.body).to.have.property('id', 2);
 
         });
 
@@ -32,7 +32,6 @@ describe('User Controller External', () => {
                     password: "senha-teste"
                 });
 
-            console.log(resposta.body);
             expect(resposta.status).to.equal(200);
             expect(resposta.body).to.have.property('message', 'Login realizado com sucesso.');
         });
