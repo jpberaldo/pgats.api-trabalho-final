@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run software tests
+    - name: Execução de testes a nivel da aplicação (Controller neste caso)
       run: npm run test-controller
 
     - name: API start
@@ -31,5 +31,5 @@ jobs:
     - name: Waiting api starting
       run: sleep 5
 
-    - name: Run software external tests
+    - name: Execução de testes a nivel external via http
       run: npm run test-external
