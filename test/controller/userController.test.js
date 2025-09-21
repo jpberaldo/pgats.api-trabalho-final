@@ -12,7 +12,7 @@ describe('User Controller', () => {
 
     describe('/POST Register', () => {
 
-        it('Quando registrar usuário com dados válidos o status de retorno será 201', async () => {
+        it.only('Quando registrar usuário com dados válidos o status de retorno será 201', async () => {
             const resposta = await request(app)
                 .post('/users/register')
                 .send({
@@ -20,8 +20,11 @@ describe('User Controller', () => {
                     password: "senha-teste"
                 });
 
+            const respostaEsperada = require('../fixtures/respostas/DadosValidosDeRegistroDeUsuario.json');
+            // exemplo se precisar remover algum campo da resposta ou da validaçao
+            // delete resposta.body.id ou delete respostaEsperada.id
+            expect(resposta.body).to.deep.equal(respostaEsperada);
             expect(resposta.status).to.equal(201);
-            expect(resposta.body).to.have.property('id', 1);
 
         });
 
