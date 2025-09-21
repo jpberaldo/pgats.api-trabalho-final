@@ -30,6 +30,10 @@ jobs:
 
     - name: Esperando inicialização da API Rest
       run: sleep 5
+    
+    - name: Criar .env
+      run: |
+        echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
 
     - name: Execução de testes a nivel external via HTTTP
       run: npm run test-external
