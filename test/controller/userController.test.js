@@ -20,7 +20,6 @@ describe('User Controller', () => {
                     password: "senha-teste"
                 });
 
-            console.log('Retorno da resposta: ', resposta.body);
             expect(resposta.status).to.equal(201);
             expect(resposta.body).to.have.property('id', 1);
 
