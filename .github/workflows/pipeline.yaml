@@ -14,22 +14,22 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Use Node.js 20.x
+    - name: Instalar Node
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
 
-    - name: Install dependencies
+    - name: Install dependências via NPM
       run: npm install
 
     - name: Execução de testes a nivel da aplicação (Controller neste caso)
       run: npm run test-controller
 
-    - name: API start
+    - name: Iniciar API Rest
       run: npm start &
 
-    - name: Waiting api starting
+    - name: Esperando inicialização da API Rest
       run: sleep 5
 
-    - name: Execução de testes a nivel external via http
+    - name: Execução de testes a nivel external via HTTTP
       run: npm run test-external
