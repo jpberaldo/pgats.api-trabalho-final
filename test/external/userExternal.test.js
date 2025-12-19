@@ -16,7 +16,7 @@ describe('User External Tests', () => {
                 });
 
             expect(resposta.status).to.equal(201);
-            expect(resposta.body).to.have.property('id', 2);
+            expect(resposta.body).to.have.property('id', 4);
 
         });
 
