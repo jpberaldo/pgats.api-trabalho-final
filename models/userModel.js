@@ -3,7 +3,18 @@ const users = [
   {
     username: 'usuario-teste-product',
     password: 'senha-teste-product'
+  },
+
+  {
+    username: 'usuario-teste-1',
+    password: 'senha1'
+  },
+
+  {
+    username: 'usuario-teste-2',
+    password: 'senha2'
   }
+
 ];
 
 module.exports = {

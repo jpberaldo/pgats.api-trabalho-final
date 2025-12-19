@@ -1,3 +1,5 @@
 node_modules/
 mochawesome-report/
 .env
+README-bkp.md
+util.txt
